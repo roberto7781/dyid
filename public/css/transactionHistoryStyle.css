@@ -1,0 +1,62 @@
+.backgroundContainer .container{
+  color: black;
+}
+
+
+.transactionContainer{
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  margin: 40px auto;
+  padding: 30px 30px;
+
+  
+}
+
+.transactionDetailContainer{
+  width: 1400px;
+  max-height: 200px;
+  border: 1px solid black;
+}
+.transactionDetailDescription{
+  margin: auto;
+
+}
+
+.totalPriceContainer{
+  width: 1400px;
+}
+
+
+.transactionDetailContainer img.productImg{
+ max-height: 90%;
+ justify-content: center;
+ 
+}
+.transactionDetailContainer .col-md-4{
+  max-height: inherit;
+}
+.productDetailContainer .row{
+  padding: 40px 0;
+}
+
+
+
+@media (min-width: 1200px) {
+  .navbarContainer {
+    max-width: 1140px; 
+  }
+  .navbarContainer .searchform{
+    width: 55%;
+    margin:0 20px !important;
+    margin-left: auto !important;
+  } }
+  .navbar .navbarContainer{
+    max-width: 100%;
+  }
+
+  @media(min-width: 800px){
+    
+  }

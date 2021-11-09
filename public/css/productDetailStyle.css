@@ -1,0 +1,38 @@
+.backgroundContainer .container{
+  color: black;
+}
+
+
+.productDetailContainer{
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  margin: 40px auto;
+
+  
+}
+
+.productDetailContainer .row{
+  padding: 40px 0;
+}
+
+
+
+@media (min-width: 1200px) {
+  .navbarContainer {
+    max-width: 1140px; 
+  }
+  .navbarContainer .searchform{
+    width: 55%;
+    margin:0 20px !important;
+    margin-left: auto !important;
+  } }
+  .navbar .navbarContainer{
+    max-width: 100%;
+  }
+
+  @media(min-width: 800px){
+    
+  }
