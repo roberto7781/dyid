@@ -32,3 +32,13 @@ h1{
     padding-bottom: 20px;
     /* color: white; */
 }
+
+@media(max-width: 1080px) {
+    .navbar .navbarContainer {
+      max-width: 1000px; 
+    }
+    .navbarContainer .searchform{
+      width: 50%;
+      margin:0 20px !important;
+      margin-left: auto !important;
+    } }

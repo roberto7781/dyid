@@ -232,6 +232,22 @@
     }
 }
 
+.navbar .navbarContainer{
+    max-width: 100%;
+  }
+
+
+@media (min-width: 991.98px) {
+  .navbarContainer {
+    max-width: 1140px; 
+  }
+  .navbarContainer .searchform{
+    width: 55%;
+    margin:0 20px !important;
+    margin-left: auto !important;
+  } }
+
+
 .searchform .form-control {
     height: 46px !important;
     background: #fff !important;

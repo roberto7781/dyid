@@ -31,7 +31,7 @@
 <body>
   <!-- HEADER -------------------------------------------------------------------------------------- -->
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
-    <div class="container">
+    <div class="container navbarContainer">
       <a class="navbar-brand" href="index.html">DY.ID</a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">

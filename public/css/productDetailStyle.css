@@ -19,20 +19,3 @@
 }
 
 
-
-@media (min-width: 1200px) {
-  .navbarContainer {
-    max-width: 1140px; 
-  }
-  .navbarContainer .searchform{
-    width: 55%;
-    margin:0 20px !important;
-    margin-left: auto !important;
-  } }
-  .navbar .navbarContainer{
-    max-width: 100%;
-  }
-
-  @media(min-width: 800px){
-    
-  }
