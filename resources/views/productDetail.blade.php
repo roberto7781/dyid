@@ -19,7 +19,7 @@
   <!-- Navbar -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="{{ asset('css('css/productDetailStyle.css'))}}">
+  <link rel="stylesheet" href="{{ asset('css/productDetailStyle.css')}}">
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
