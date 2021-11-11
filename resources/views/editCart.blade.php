@@ -80,16 +80,16 @@
         <hr>
         <div class="row">
           <div class="col-12">
-            <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
+            <form action="{{route('updateCart',  ['id' => $selectedCart->productID])}}" method="POST">
               @csrf
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <label for="updateQuantity" class="col-sm-2 col-form-label">Quantity</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty" value="{{$selectedCart->quantity}}">
+                <input type="text" class="form-control" id="updateQuantity" name="updateQuantity" placeholder="Qty" value="{{$selectedCart->quantity}}">
               </div>
 
               <div class="col-sm-6">
-                <button type="submit" class="btn btn-primary mb-2">Buy</button>
+                <button type="submit" class="btn btn-primary mb-2">Update</button>
               </div>
             </div>
             </form>

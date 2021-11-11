@@ -79,7 +79,7 @@
               <form action="{{((route ('deleteCart', ['id' => $cart->productID])))}}" method="POST">
                 @csrf
                 <a class="btn btn-primary" id="button-addon2" type="button" href="{{((route('editCartView', ['id' => $cart->productID])))}}">Edit</a>
-              <button class="btn btn-primary" id="button-addon2" type="button">Delete</button>
+              <button class="btn btn-primary" id="button-addon2" type="submit">Delete</button>
               </form>
               
             </div>
