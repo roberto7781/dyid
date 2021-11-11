@@ -19,6 +19,10 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category', 'categoryID', 'id');
     }
 
+    public function cart() {
+        $this->hasMany('App\Models\Product');
+    }
+
     public function getAuthImage(){
         return $this->productImage;
     }
