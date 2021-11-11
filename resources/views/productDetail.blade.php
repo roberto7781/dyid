@@ -62,7 +62,7 @@
 
     <div class="row">
       <div class="col-12 col-lg-5 m-auto">
-        <img src="{{url('/images/'.$selectedProduct->product->productImage)}}">
+        <img src="{{url('/images/'.$selectedProduct->productImage)}}">
 
       </div>
       <div class="col-1"></div>

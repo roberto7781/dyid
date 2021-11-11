@@ -1,4 +1,4 @@
-@extends('guestLayout')
+@extends('adminLayout')
 @section('title')
   <title>Welcome to DYID</title>
 @endsection
