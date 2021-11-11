@@ -65,4 +65,4 @@ route::post('/addToCart{id}', [CartController::class, 'addToCart'])->name('addTo
 route::get('/viewCart', [CartController::class, 'showCartView'])->name('viewCart');
 
 route::post('/deleteCart{id}', [CartController::class, 'deleteCart'])->name("deleteCart");
-route::get('/editCategory{id}', [CategoryController::class, 'editCategoryView'])->name("editCategoryView");
+route::get('/editCart{id}', [CartController::class, 'editCartView'])->name("editCartView");

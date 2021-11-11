@@ -83,7 +83,7 @@
             <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
               @csrf
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
               <div class="col-sm-2">
                 <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty">
               </div>

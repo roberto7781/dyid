@@ -75,13 +75,11 @@ class CartController extends Controller
     }
 
     
-    public function editCategoryView(Request $request){
-
-        $cc = new CategoryController();
+    public function editCartView(Request $request){
 
         $id = $request->id;
 
-        $selectedCart = Cart::where('productID', $request->id)->first();
+        $selectedCart = Cart::where('productID', $id)->first();
 
         $data = [
             'selectedCart' => $selectedCart

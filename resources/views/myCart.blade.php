@@ -70,15 +70,15 @@
             <div class="col-md-1"></div>
             <div class="col-12 col-md-7 cartDescription">
               <div class="topText">
-                <span>IDR. {{$cart->product->productName}}</span>
-                <span>{{$cart->product->productPrice}}</span>
+                <span>{{$cart->product->productName}}</span>
+                <span>IDR. {{$cart->product->productPrice}}</span>
               </div>
 
               <h2>x{{$cart->quantity}} pcs</h2>
               <h2>IDR. {{$cart->product->productPrice}}</h2>
               <form action="{{((route ('deleteCart', ['id' => $cart->productID])))}}" method="POST">
                 @csrf
-                <a class="btn btn-primary" id="button-addon2" type="button">Edit</a>
+                <a class="btn btn-primary" id="button-addon2" type="button" href="{{((route('editCartView', ['id' => $cart->productID])))}}">Edit</a>
               <button class="btn btn-primary" id="button-addon2" type="button">Delete</button>
               </form>
               
