@@ -14,5 +14,10 @@ class CartController extends Controller
         ]);
 
         $data = $request->all();
+
+        Cart::create([
+            'productID' => $data['productID'],
+            'quantity' => $data['inputQuantity']
+        ])
     }
 }
