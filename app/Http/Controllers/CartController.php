@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -16,8 +17,9 @@ class CartController extends Controller
         $data = $request->all();
 
         Cart::create([
-            'productID' => $data['productID'],
+            'productID' => $data['id'],
             'quantity' => $data['inputQuantity']
-        ])
+        ]);
+        return '<script type="text/javascript">alert("Product has been added!");</script>';
     }
 }

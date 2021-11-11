@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
@@ -58,3 +59,6 @@ route::get('/editProduct{id}', [ProductController::class, 'editProductView'])->n
 route::post('/updateProduct{id}', [ProductController::class, 'updateProduct'])->name("updateProduct");
 
 route::post('/deleteProduct{id}', [ProductController::class, 'deleteProduct'])->name("deleteProduct");
+
+// Cart
+route::post('/addToCart{id}', [CartController::class, 'addToCart'])->name('addToCart');
