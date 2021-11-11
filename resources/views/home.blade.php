@@ -64,23 +64,25 @@
   <div class="container " style="padding: 40px;max-width: 85%;">
 
     <div class="row">
+
+    @foreach($products as $product)
       <div class="col-6 col-md-4 productContainer">
         <div class="card " >
-          <img class="card-img-top productImage" id="productImage" src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg" alt="Card image cap">
+          <img class="card-img-top productImage" id="productImage" name="productImage" src="{{url('/images/'.$product->productImage)}}" alt="Card image cap">
           <div class="card-body">
             <div class="row">
         
               <div class="col-6">
-                <h3 class="card-text productName" id="productName">Samsung</h3>
+                <h3 class="card-text productName" id="productName" name="productName">{{$product->productName}}</h3>
               </div>
               <div class="col-2"></div>
               <div class="col-4">
-                <p class="card-text productCategory" id="productCategory" style="align-items: center;">asdfadsfdasf</p>
+                <p class="card-text productCategory" id="productCategory" name="productCategory" style="align-items: center;">{{$product->category->categoryName}}</p>
               </div>
             </div>
               <div class="row">
                 <div class="col-12">
-                  <p class="card-text productPrice" id="productPrice">231231</p>
+                  <p class="card-text productPrice" id="productPrice" name="productPrice">{{$product->productPrice}}</p>
                 </div>
               </div>
             <div class="row">
@@ -88,76 +90,11 @@
                 <button id="productDetail" class="btn btn-secondary buyBtn">Buy Now</button>
               </div>
             </div>
-           
-           
-      
-
-
- 
           </div>
         </div>
       </div>
 
-      <div class="col-6 col-md-4 productContainer">
-        <div class="card " >
-          <img class="card-img-top productImage" id="productImage" src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg" alt="Card image cap">
-          <div class="card-body ">
-            <p class="card-text productDescription" id="productDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productPrice" id="productPrice">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productName" id="productName">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button id="productDetail"></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-4 productContainer">
-        <div class="card " >
-          <img class="card-img-top productImage" id="productImage" src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text productDescription" id="productDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productPrice" id="productPrice">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productName" id="productName">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button id="productDetail"></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-4 productContainer">
-        <div class="card " >
-          <img class="card-img-top productImage" id="productImage" src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text productDescription" id="productDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productPrice" id="productPrice">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productName" id="productName">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button id="productDetail"></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-4 productContainer">
-        <div class="card ">
-          <img class="card-img-top productImage" id="productImage" src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text productDescription" id="productDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productPrice" id="productPrice">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productName" id="productName">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button id="productDetail"></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-6 col-md-4 productContainer">
-        <div class="card " >
-          <img class="card-img-top productImage" id="productImage" src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text productDescription" id="productDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productPrice" id="productPrice">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="card-text productName" id="productName">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button id="productDetail"></button>
-          </div>
-        </div>
-      </div>
-      
+    @endforeach
     </div>
 
     <nav aria-label="Page navigation example">

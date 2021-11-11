@@ -47,7 +47,8 @@ route::post('/deleteCategory{id}', [CategoryController::class, 'deleteCategory']
 
 
 // Product
-route::get('/product', [ProductController::class, 'showProductView'])->name("viewProduct");
+route::get('/product', [ProductController::class, 'showAdminProductView'])->name("viewAdminProduct");
+route::get('/home', [ProductController::class, 'showProductView'])->name("viewProduct");
 
 route::get('/addProduct', [ProductController::class, 'showAddProductView'])->name("addProductView");
 route::post('/create-product', [ProductController::class, 'addProduct'])->name('createProduct');

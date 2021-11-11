@@ -24,7 +24,7 @@ class ProductController extends Controller
         return view('addProduct', $cc->getAllCategory());
     }
 
-    public function showProductView(){
+    public function showAdminProductView(){
 
         $data = [
             'products' => $this->getAllProduct()
@@ -32,6 +32,29 @@ class ProductController extends Controller
 
         return view("viewProduct", $data);
     }
+
+    public function showProductView(){
+        $data = [
+            'products' => $this->getAllProduct()
+       ];
+
+        return view("home", $data);
+    }
+
+    public function showProductDetailView(Request $request){
+        $id = $request->id;
+
+        $selectedProduct = Product::where('id', $id)->first();
+
+        $data = [
+            'selectedProduct' => $selectedProduct
+          ];
+
+        return view('productDetail', $data);
+
+    }
+
+
 
     public function addProduct(Request $request){
  
