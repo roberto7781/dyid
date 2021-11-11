@@ -81,6 +81,7 @@
         <div class="row">
           <div class="col-12">
             <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
+              @csrf
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-2">
