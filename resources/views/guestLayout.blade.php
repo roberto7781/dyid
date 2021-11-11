@@ -30,7 +30,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
         <div class="container navbarContainer">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 <img style="height: 50px" src="{{url('/images/Logo_DYID_White.png')}}" alt="DYID Logo">
             </a>
 
@@ -45,11 +45,11 @@
                     </div>
                 </form>
                 <ul class="navbar-nav " style="margin-left: auto;">
-                    <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item active"><a href="{{ url('/home') }}" class="nav-link">Home</a></li>
 
-                    <li class="nav-item"><a href="#" class="nav-link logoutBtn"><i class="fas fa-sign-in-alt"></i>
+                    <li class="nav-item"><a href="{{ url('/') }}" class="nav-link logoutBtn"><i class="fas fa-sign-in-alt"></i>
                             Login</a></li>
-                    <li class="nav-item"><a href="./register.html" class="nav-link logoutBtn"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <li class="nav-item"><a href="{{ url('/register') }}" class="nav-link logoutBtn"><i class="fa fa-user-plus" aria-hidden="true"></i>
                             Register</a></li>
                 </ul>
             </div>
