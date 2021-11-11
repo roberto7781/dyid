@@ -62,3 +62,7 @@ route::post('/deleteProduct{id}', [ProductController::class, 'deleteProduct'])->
 
 // Cart
 route::post('/addToCart{id}', [CartController::class, 'addToCart'])->name('addToCart');
+route::get('/viewCart', [CartController::class, 'showCartView'])->name('viewCart');
+
+route::post('/deleteCart{id}', [CartController::class, 'deleteCart'])->name("deleteCart");
+route::get('/editCategory{id}', [CategoryController::class, 'editCategoryView'])->name("editCategoryView");

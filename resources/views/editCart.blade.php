@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -18,7 +19,7 @@
   <!-- Navbar -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="{{ asset('css/myCartStyle.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/productDetailStyle.css')}}">
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +34,8 @@
     <div class="container navbarContainer">
       <a class="navbar-brand" href="index.html">DY.ID</a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa fa-bars"></span> Menu
       </button>
       <div class="collapse navbar-collapse order-sm-last" id="ftco-nav">
@@ -45,70 +47,68 @@
         </form>
         <ul class="navbar-nav " style="margin-left: auto;">
           <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
-
+ 
           <li class="nav-item"><a href="#" class="nav-link logoutBtn"><i class="fa fa-sign-in" aria-hidden="true"></i>
               Login</a></li>
-          <li class="nav-item"><a href="./register.html" class="nav-link logoutBtn"><i class="fa fa-user-plus" aria-hidden="true"></i>
-              Register</a></li>
+              <li class="nav-item"><a href="./register.html" class="nav-link logoutBtn"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                Register</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- Body -->
-  <div class="mainContainer">
+<div class="mainContainer">
+  <div class="container productDetailContainer" style="max-width: 85%;">
 
-    <div class="container" style="max-width: 90%;">
-      <h1>My Cart</h1>
-      <div class="row cartContainer">
-        <div class="col-12">
+    <div class="row">
+      <div class="col-12 col-lg-5 m-auto">
+        <img src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg">
 
-          @foreach($carts as $cart)
-          <div class="row cartDetailContainer">
-            <div class="col-12 col-md-4 cartImage">
-              <img src="{{url('/images/'.$cart->product->productImage)}}">
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-12 col-md-7 cartDescription">
-              <div class="topText">
-                <span>IDR. {{$cart->product->productName}}</span>
-                <span>{{$cart->product->productPrice}}</span>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-12 col-lg-5 m-auto">
+        <h2>{{$selectedCart->product->productName}}</h2>
+        <hr>
+        <h3>Category:</h3>
+        <p>{{$selectedCart->product->category->categoryName}}</p>
+        <hr>
+        <h3>Price:</h3>
+        <p>{{$selectedCart->product->productPrice}}</p>
+        <hr>
+        <h3>Description:</h3>
+        <p>{{$selectedCart->product->productDescription}}</p>
+        <hr>
+        <div class="row">
+          <div class="col-12">
+            <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
+              @csrf
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty" value="{{$selectedCart->quantity}}">
               </div>
 
-              <h2>x{{$cart->quantity}} pcs</h2>
-              <h2>IDR. {{$cart->product->productPrice}}</h2>
-              <form action="{{((route ('deleteCart', ['id' => $cart->productID])))}}" method="POST">
-                @csrf
-                <a class="btn btn-primary" id="button-addon2" type="button">Edit</a>
-              <button class="btn btn-primary" id="button-addon2" type="button">Delete</button>
-              </form>
-              
+              <div class="col-sm-6">
+                <button type="submit" class="btn btn-primary mb-2">Buy</button>
+              </div>
             </div>
-
+            </form>
+      
+              
+            </form>
+     
           </div>
-          @endforeach
-
         </div>
-
+        
       </div>
-
-
-
-      <div class="row">
-        <div class="col-6">
-          <p>Total Price:</p>
-          <p>sdfasdfsdafsd</p>
-        </div>
-
-        <div class="col-6">
-          <button class="btn btn-primary" id="button-addon2" type="button" style="float: right;">Buy</button>
-        </div>
-      </div>
-
-    </div>
 
   </div>
 
-  <div class="d-flex flex-column ">
+ 
+</div>
+ </div>
+
+  <div class="d-flex flex-column " >
     <!-- FOOTER -->
     <footer class="w-100 py-4 flex-shrink-0">
       <div class="container py-4">
@@ -128,8 +128,10 @@
               significant time before providing a response.</p>
             <form action="#">
               <div class="input-group mb-3">
-                <input class="form-control" type="text" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+                <input class="form-control" type="text" placeholder="Recipient's username"
+                  aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-primary" id="button-addon2" type="button"><i
+                    class="fas fa-paper-plane"></i></button>
               </div>
             </form>
           </div>
@@ -143,8 +145,10 @@
 
 <!-- Navbar -->
 <!-- Bootstrap 5 JSS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/navbar.js"></script>
 
