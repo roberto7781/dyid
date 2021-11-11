@@ -46,11 +46,12 @@
                 </form>
                 <ul class="navbar-nav " style="margin-left: auto;">
                     <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
-
-                    <li class="nav-item"><a href="#" class="nav-link logoutBtn"><i class="fas fa-sign-in-alt"></i>
-                            Login</a></li>
-                    <li class="nav-item"><a href="./register.html" class="nav-link logoutBtn"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                            Register</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link logoutBtn"><i class="fas fa-shopping-cart"></i>
+                            My Cart</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link logoutBtn"><i class="fas fa-history"></i>
+                            History Transaction</a></li>
+                    <li class="nav-item"><a href="./register.html" class="nav-link logoutBtn"><i class="fas fa-sign-out-alt"></i>
+                            Logout</a></li>
                 </ul>
             </div>
         </div>
