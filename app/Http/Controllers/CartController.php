@@ -88,4 +88,24 @@ class CartController extends Controller
         return view('editCart', $data);
 
     }
+
+    public function updateCart(Request $request){
+
+        $request->validate([
+            'updateQuantity' => 'required|min:0|not_in:0'
+
+        ]);
+
+        $id = $request->id;
+
+        $data = $request->all();
+        
+        $selectedCart = Cart::where('productID', $id)->first();
+        $selectedCart->update([
+            'quantity' => $data['updateQuantity']
+        ]);
+
+    
+        return redirect("viewCart");
+    }
 }
