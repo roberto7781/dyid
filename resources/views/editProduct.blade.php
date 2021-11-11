@@ -76,20 +76,20 @@
       @csrf
       <div class="form-group">
         <label for="updateProductName">Product Name</label>
-        <input type="text" class="form-control" id="updateProductName" name="updateProductName" placeholder="Product Name">
+        <input type="text" class="form-control" id="updateProductName" name="updateProductName" placeholder="Product Name" value="{{$selectedProduct->productName}}">
       </div>
       <div class="form-group">
         <label for="updateProductName">Product Description</label>
-        <input type="text" class="form-control" id="updateProductDescription" name="updateProductDescription" placeholder="Product Description">
+        <input type="text" class="form-control" id="updateProductDescription" name="updateProductDescription" placeholder="Product Description" value="{{$selectedProduct->productDescription}}">
         <!-- <textarea class="form-control" id="productDescription" rows="20" placeholder="Product Description"></textarea> -->
       </div>
       <div class="form-group">
-        <label for="updateProductName">Product Price</label>
-        <input type="text" class="form-control textarea" id="updateProductPrice" name="updateProductPrice" placeholder="Product Price">
+        <label for="updateProductPrice">Product Price</label>
+        <input type="text" class="form-control textarea" id="updateProductPrice" name="updateProductPrice" placeholder="Product Price" value="{{$selectedProduct->productPrice}}">
       </div>
       <div class="form-group">
         <label for="updateProductCategory">Product Category</label>
-        <select class="form-control" id="updateProductCategory" name="updateCategoryID">
+        <select class="form-control" id="updateProductCategory" name="updateCategoryID" value="{{$selectedProduct->category->categoryName}}">
          
         @foreach($categories as $category)
           <option value="{{$category->id}}" id="updateCategoryID" name="updateCategoryID">{{$category->categoryName}}</option>

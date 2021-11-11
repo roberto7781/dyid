@@ -67,29 +67,32 @@
       </div>
       <div class="col-1"></div>
       <div class="col-12 col-lg-5 m-auto">
-        <h2>Product Name</h2>
+        <h2>{{$selectedProduct->productName}}</h2>
         <hr>
         <h3>Category:</h3>
-        <p>Smartphone</p>
+        <p>{{$selectedProduct->category->categoryName}}</p>
         <hr>
         <h3>Price:</h3>
-        <p>Smartphone</p>
+        <p>{{$selectedProduct->productPrice}}</p>
         <hr>
         <h3>Description:</h3>
-        <p>Smartphone</p>
+        <p>{{$selectedProduct->productDescription}}</p>
         <hr>
         <div class="row">
           <div class="col-12">
+            <form>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputPassword" placeholder="Qty">
+                <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty">
               </div>
 
               <div class="col-sm-6">
                 <button type="submit" class="btn btn-primary mb-2">Buy</button>
               </div>
             </div>
+            </form>
+      
               
             </form>
      

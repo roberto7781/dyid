@@ -87,7 +87,9 @@
               </div>
             <div class="row">
               <div class="col-12">
-                <button id="productDetail" class="btn btn-secondary buyBtn">Buy Now</button>
+                
+                <a id="productDetail" class="btn btn-secondary buyBtn" href="{{((route ('viewProductDetail', ['id' => $product->id])))}}">Buy Now</a>
+                
               </div>
             </div>
           </div>
