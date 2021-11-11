@@ -27,9 +27,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-
+  <link rel="icon" href="{{url('/images/Logo_DYID_Black.png')}}" type="images/png">
+  <title>Welcome to DYID</title>
 </head>
 
 <body>
