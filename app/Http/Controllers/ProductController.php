@@ -183,9 +183,6 @@ class ProductController extends Controller
         $request->updateProductImage->move(public_path('images'), $request->file('updateProductImage')->getClientOriginalName());
        
 
-      
-      
- 
         
         return redirect('product');
     }
