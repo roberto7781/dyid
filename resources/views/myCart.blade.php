@@ -62,44 +62,31 @@
       <div class="row cartContainer">
         <div class="col-12">
 
-
+          @foreach($carts as $cart)
           <div class="row cartDetailContainer">
             <div class="col-12 col-md-4 cartImage">
-              <img src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg">
+              <img src="{{url('/images/'.$cart->product->productImage)}}">
             </div>
             <div class="col-md-1"></div>
             <div class="col-12 col-md-7 cartDescription">
               <div class="topText">
-                <span>Acer</span>
-                <span>dsafsdf</span>
+                <span>IDR. {{$cart->product->productName}}</span>
+                <span>{{$cart->product->productPrice}}</span>
               </div>
 
-              <h2>asdfdsf</h2>
-              <h2>asdasdsa</h2>
-              <button class="btn btn-primary" id="button-addon2" type="button">Buy</button>
-              <button class="btn btn-primary" id="button-addon2" type="button">Buy</button>
+              <h2>x{{$cart->quantity}} pcs</h2>
+              <h2>IDR. {{$cart->product->productPrice}}</h2>
+              <form action="{{((route ('deleteCart', ['id' => $cart->productID])))}}" method="POST">
+                @csrf
+                <a class="btn btn-primary" id="button-addon2" type="button">Edit</a>
+              <button class="btn btn-primary" id="button-addon2" type="button">Delete</button>
+              </form>
+              
             </div>
 
           </div>
+          @endforeach
 
-          <div class="row cartDetailContainer">
-            <div class="col-12 col-md-4 cartImage">
-              <img src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg">
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-12 col-md-7 cartDescription">
-              <div class="topText">
-                <span>Acer</span>
-                <span>dsafsdf</span>
-              </div>
-
-              <h2>asdfdsf</h2>
-              <h2>asdasdsa</h2>
-              <button class="btn btn-primary" id="button-addon2" type="button">Buy</button>
-              <button class="btn btn-primary" id="button-addon2" type="button">Buy</button>
-            </div>
-
-          </div>
         </div>
 
       </div>

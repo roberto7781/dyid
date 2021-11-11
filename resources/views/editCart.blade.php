@@ -67,16 +67,16 @@
       </div>
       <div class="col-1"></div>
       <div class="col-12 col-lg-5 m-auto">
-        <h2>{{$selectedProduct->productName}}</h2>
+        <h2>{{$selectedCart->product->productName}}</h2>
         <hr>
         <h3>Category:</h3>
-        <p>{{$selectedProduct->category->categoryName}}</p>
+        <p>{{$selectedCart->product->category->categoryName}}</p>
         <hr>
         <h3>Price:</h3>
-        <p>{{$selectedProduct->productPrice}}</p>
+        <p>{{$selectedCart->product->productPrice}}</p>
         <hr>
         <h3>Description:</h3>
-        <p>{{$selectedProduct->productDescription}}</p>
+        <p>{{$selectedCart->product->productDescription}}</p>
         <hr>
         <div class="row">
           <div class="col-12">
@@ -85,7 +85,7 @@
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty">
+                <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty" value="{{$selectedCart->quantity}}">
               </div>
 
               <div class="col-sm-6">

@@ -16,6 +16,14 @@ class CartController extends Controller
         return $allCart;
     }
 
+    public function showCartView(){
+        $data = [
+            'carts' => $this->getAllCart()
+       ];
+
+        return view("myCart", $data);
+    }
+
     public function addToCart(Request $request){
         $request->validate([
             'inputQuantity' => 'required|min:0|not_in:0'
@@ -36,7 +44,7 @@ class CartController extends Controller
         $data = $request->all();
         
         if($flag == true){
-            $selectedCart = CaRT::where('productID', $request->id)->first();
+            $selectedCart = Cart::where('productID', $request->id)->first();
             $selectedCart->update([
                 'quantity' => $data['inputQuantity'] + $currentQty
             ]);
@@ -50,5 +58,36 @@ class CartController extends Controller
 
       
         return back();
+    }
+
+
+    
+    public function deleteCart(Request $request){
+        $id = $request->id;
+
+        $selectedCart = Cart::where('productID', $request->id)->first();
+
+      
+        $selectedCart->delete();
+
+        return back();
+
+    }
+
+    
+    public function editCategoryView(Request $request){
+
+        $cc = new CategoryController();
+
+        $id = $request->id;
+
+        $selectedCart = Cart::where('productID', $request->id)->first();
+
+        $data = [
+            'selectedCart' => $selectedCart
+          ];
+
+        return view('editCart', $data);
+
     }
 }
