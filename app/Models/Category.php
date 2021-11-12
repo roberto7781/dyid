@@ -14,7 +14,7 @@ class Category extends Model
     ];
 
     public function product() {
-        $this->hasMany('App\Models\Product');
+        return $this->hasMany('App\Models\Product');
     }
 
 }

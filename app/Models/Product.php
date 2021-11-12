@@ -15,19 +15,20 @@ class Product extends Model
         'productImage'
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo('App\Models\Category', 'categoryID', 'id');
     }
 
-    public function cart() {
-        $this->hasMany('App\Models\Product');
+    public function cart()
+    {
+        return $this->hasMany('App\Models\Product');
     }
 
-    public function getAuthImage(){
+    public function getAuthImage()
+    {
         return $this->productImage;
     }
 
     use HasFactory;
 }
-  
-
