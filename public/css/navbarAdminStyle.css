@@ -1,0 +1,23 @@
+@media(min-width: 978px) and (max-width:980px){
+  .navbar .navbarContainer {
+    max-width: 1000px; 
+  }
+  .navbarContainer .searchform{
+    width: 45%;
+    margin:0 20px !important;
+    margin-left: auto !important;
+  } }
+
+ 
+  @media(min-width: 981px) and (max-width:1080px){
+    .navbar .navbarContainer {
+      max-width: 1000px; 
+    }
+    .navbarContainer .searchform{
+      width: 45%;
+      margin:0 20px !important;
+      margin-left: auto !important;
+    } }
+  
+   
+  

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -10,6 +11,17 @@ class ProductController extends Controller
 {
     //
    
+    public function handle($request, Closure $next)
+{
+    //check here if the user is authenticated
+    if (!$this->auth->user() )
+    {
+        return redirect('index');
+    }
+
+    return $next($request);
+}
+
     public function getAllProduct(){
         $allProduct = Product::all();
 
@@ -35,7 +47,7 @@ class ProductController extends Controller
 
     public function showProductView(){
         $data = [
-            'products' => $this->getAllProduct()
+            'products' => Product::paginate(3)
        ];
 
         return view("home", $data);
@@ -59,7 +71,7 @@ class ProductController extends Controller
     public function addProduct(Request $request){
  
         $request->validate([
-            'productName' => 'required|min:5',
+            'productName' => 'required|min:5|unique:products',
             'productDescription' => 'required|min:50',
             'productPrice' => 'required|numeric|min:0|not_in:0',
             'categoryID' => 'required',
@@ -84,7 +96,7 @@ class ProductController extends Controller
     ]);
             
 
-        return redirect('/');
+        return redirect('/product');
     }
 
 
@@ -158,6 +170,17 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request){
         $id = $request->id;
+        // ['required','min:5',Rule::unique('products')->ignore($this->id)]
+        $request->validate([
+            'updateProductName' => 'required|min:5|unique:products,productName,'.$id,
+            'updateProductDescription' => 'required|min:50',
+            'updateProductPrice' => 'required|numeric|min:0|not_in:0',
+            'updateCategoryID' => 'required',
+            'updateProductImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg'
+
+        ]);
+
+     
 
         $data = $request->all();
         
@@ -185,6 +208,18 @@ class ProductController extends Controller
 
         
         return redirect('product');
+    }
+
+
+    public function searchProducts(Request $request){
+        $selectedProducts = Product::where('productName', 'like', "%$request->query_param%")->paginate(3);
+
+        $data = [
+            'products' => $selectedProducts
+       ];
+
+        return view("home", $data);
+
     }
 
 

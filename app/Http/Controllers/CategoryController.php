@@ -35,7 +35,7 @@ class CategoryController extends Controller
     public function showCategoryView(){
 
 
-        return view("viewCategory", $this->getAllCategory());
+        return view("categoryView", $this->getAllCategory());
     }
 
     public function addCategory(Request $request){
@@ -47,7 +47,7 @@ class CategoryController extends Controller
     
         Category::create($request->all());
 
-        return redirect('/');
+        return redirect('/category');
     }
 
 
@@ -90,4 +90,6 @@ class CategoryController extends Controller
 
         return redirect('category');
     }
+
+  
 }

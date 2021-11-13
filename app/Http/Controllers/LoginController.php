@@ -41,12 +41,17 @@ class LoginController extends Controller
         ]);
     }
 
-
+    public function logOut(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/');
+    }
     // Redirect if logged in
 
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+      
+        $this->middleware('guest')->except('logOut');
     }
 
 }

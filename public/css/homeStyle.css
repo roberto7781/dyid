@@ -44,7 +44,9 @@ input:focus::-webkit-input-placeholder { color:transparent; } */
   margin-bottom: 40px;
 }
 .paginationContainer{
-  max-width: 85%;
+  max-width: 90%;
+  width: 90%;
+  padding: 40px 60px;
 }
 .productContainer .card{
   width: 100%;
