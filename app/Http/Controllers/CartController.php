@@ -109,5 +109,9 @@ class CartController extends Controller
         return redirect("viewCart");
     }
 
+
+    public function deleteAllCart(){
+        Cart::getQuery()->delete();
+    }
   
 }

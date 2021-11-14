@@ -55,7 +55,7 @@
         @elseif(!Auth::guest() && Auth::user()->hasRole('Member'))
         <li class="nav-item"><a href="{{route('cartView')}}" class="nav-link logoutBtn"><i class="fas fa-shopping-cart"></i>
             My Cart</a></li>
-        <li class="nav-item"><a href="{{route('cartView')}}" class="nav-link logoutBtn"><i class="fas fa-history"></i>
+        <li class="nav-item"><a href="{{route('transactionHistoryView')}}" class="nav-link logoutBtn"><i class="fas fa-history"></i>
             History Transaction</a></li>
 
 

@@ -2,6 +2,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/myCartStyle.css')}}">
+
 @endpush
 
 @section('content')
@@ -58,7 +59,7 @@
       </div>
 
       <div class="col-6">
-        <button class="btn btn-primary" id="button-addon2" type="button" style="float: right;">Checkout</button>
+          <a class="btn btn-primary" id="button-addon2"  style="float: right;" href="{{route('checkOut')}}">Checkout</a>
       </div>
     </div>
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,3 +77,7 @@ route::get('/viewCart', [CartController::class, 'showCartView'])->name('cartView
 route::post('/deleteCart{id}', [CartController::class, 'deleteCart'])->name("deleteCart");
 route::get('/editCart{id}', [CartController::class, 'editCartView'])->name("editCartView");
 route::post('/updateCart{id}', [CartController::class, 'updateCart'])->name("updateCart");
+
+//Transaction
+route::get('/checkOut', [TransactionController::class, 'insertTransaction'])->name('checkOut');
+route::get('/transactionHistory', [TransactionController::class, 'showTransactionHistory'])->name('transactionHistoryView');

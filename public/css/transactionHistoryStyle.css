@@ -16,8 +16,8 @@
 }
 
 .transactionDetailContainer{
-  width: 1400px;
-  max-height: 200px;
+  width: 100%;
+ 
   border: 1px solid black;
 }
 .transactionDetailDescription{
@@ -31,8 +31,13 @@
 
 
 .transactionDetailContainer img.productImg{
- max-height: 90%;
- justify-content: center;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 16px -1px rgba(0,0,0,0.75);
+  border-radius: 20px;
+  margin: 40px auto;
+  margin: 0 0 40px 0;
  
 }
 .transactionDetailContainer .col-md-4{
@@ -42,5 +47,40 @@
   padding: 40px 0;
 }
 
+.transactionDetailImage img{
+  max-height: 90%;
+}
 
+.transactionDetailDescription{
+  margin: auto;
+  max-height: 90%;
+}
+
+
+.panel-heading {
+  padding: 0;
+	border:0;
+}
+.panel-title>a, .panel-title>a:active{
+	display:block;
+	padding:15px;
+  color:#555;
+  font-size:16px;
+  font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing:1px;
+  word-spacing:3px;
+	text-decoration:none;
+}
+.panel-heading  a:before {
+   font-family: 'Glyphicons Halflings';
+   content: "\e113";
+   float: right;
+   transition: all 0.5s;
+}
+.panel-heading.active a:before {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
+} 
 

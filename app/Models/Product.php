@@ -25,6 +25,10 @@ class Product extends Model
         return $this->hasMany('App\Models\Product');
     }
 
+    public function transaction_details(){
+        return $this->hasMany('App\Models\TransactionDetail');
+    }
+
     public function getAuthImage()
     {
         return $this->productImage;
