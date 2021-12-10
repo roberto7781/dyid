@@ -12,6 +12,9 @@
             <div class="form-group">
               <label for="categoryName">Category Name</label>
               <input type="text" class="form-control" id="categoryName" name="updateCategoryName" value="{{$selectedCategory->categoryName}}" placeholder="Category Name">
+              @if ($errors->has('updateCategoryName'))
+              <span class="text-danger">{{ $errors->first('updateCategoryName') }}</span>
+              @endif
             </div>
             <div class="row">
                 <div class="col-12">

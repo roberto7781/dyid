@@ -10,7 +10,7 @@
 
     <div class="row">
       <div class="col-12 col-lg-6 m-auto">
-        <img src="{{url('/images/'.$selectedProduct->productImage)}}" style="width:100%;padding:5%;display: block;
+        <img src="../storage/images/{{$selectedProduct->productImage}}" style="width:100%;padding:5%;display: block;
   margin-left: auto;
   margin-right: auto;">
 
@@ -32,36 +32,41 @@
           <div class="col-12">
             <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
               @csrf
-            <div class="form-group row">
-              <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty">
+              <div class="form-group row">
+                <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="inputQuantity" name="inputQuantity" placeholder="Qty">
+                </div>
+
+                <div class="col-sm-6">
+                  @if(!Auth::guest() && Auth::user()->hasRole('Member'))
+                  <button type="submit" class="btn btn-primary mb-2">Buy</button>
+                  @elseif(Auth::guest())
+                  <a class="btn btn-warning mb-2" href="{{route('loginView')}}">Login to buy</a>
+
+                  @endif
+                </div>
+                @if ($errors->has('inputQuantity'))
+                <div class="col-12"><span class="text-danger">{{ $errors->first('inputQuantity') }}</span></div>
+                @endif
               </div>
 
-              <div class="col-sm-6">
-              @if(!Auth::guest() && Auth::user()->hasRole('Member'))
-                <button type="submit" class="btn btn-primary mb-2">Buy</button>
-              @elseif(Auth::guest())
-              <a class="btn btn-warning mb-2">Login to buy</a>
+            </form>
 
-              @endif
-              </div>
-            </div>
+
             </form>
-      
-              
-            </form>
-     
+
+
+
           </div>
         </div>
-        
+
       </div>
 
-  </div>
+    </div>
 
- 
+
+  </div>
 </div>
- </div>
 
 @endsection
-

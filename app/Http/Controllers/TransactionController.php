@@ -13,12 +13,12 @@ class TransactionController extends Controller
 
     public function getAllTransaction(){
 
-        return Transaction::All();
+        return Transaction::where('userID', Auth::id())->get();
     }
 
     public function getAllTransactionDetail($transactionID){
 
-        return TransactionDetail::where("transactionID", $transactionID)->all();
+        return TransactionDetail::where(["transactionID" => $transactionID, 'userID' => Auth::id()])->get();
     }
 
     public function insertTransaction(){
@@ -37,7 +37,7 @@ class TransactionController extends Controller
 
         $cc->deleteAllCart();
 
-        return redirect('/');
+        return redirect('transactionHistory');
     }
 
 

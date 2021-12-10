@@ -9,12 +9,14 @@
   <div class="container productDetailContainer" style="max-width: 85%;">
 
     <div class="row">
-      <div class="col-12 col-lg-5 m-auto">
-        <img src="https://static.bmdstatic.com/pk/product/medium/5e3bd1cf6dbab.jpg">
+      <div class="col-12 col-lg-6 m-auto">
+        <img src="../storage/images/{{$selectedCart->product->productImage}}" style="width:100%;padding:5%;display: block;
+margin-left: auto;
+margin-right: auto;">
 
       </div>
-      <div class="col-1"></div>
-      <div class="col-12 col-lg-5 m-auto">
+      <!-- <div class="col-1"></div> -->
+      <div class="col-12 col-lg-6 m-auto">
         <h2>{{$selectedCart->product->productName}}</h2>
         <hr>
         <h3>Category:</h3>
@@ -24,7 +26,7 @@
         <p>{{$selectedCart->product->productPrice}}</p>
         <hr>
         <h3>Description:</h3>
-        <p>{{$selectedCart->product->productDescription}}</p>
+        <p style="word-break:break-all;width:90%">{{$selectedCart->product->productDescription}}</p>
         <hr>
         <div class="row">
           <div class="col-12">
@@ -39,11 +41,15 @@
                 <div class="col-sm-6">
                   <button type="submit" class="btn btn-primary mb-2">Update</button>
                 </div>
+                @if ($errors->has('updateQuantity'))
+                <div class="col-12"><span class="text-danger">{{ $errors->first('updateQuantity') }}</span></div>
+                @endif
               </div>
             </form>
 
-
             </form>
+
+
 
           </div>
         </div>
@@ -54,6 +60,7 @@
 
 
   </div>
+
 </div>
 
 @endsection

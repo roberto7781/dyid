@@ -6,143 +6,150 @@ use App\Models\Product;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     //
-   
+
     public function handle($request, Closure $next)
-{
-    //check here if the user is authenticated
-    if (!$this->auth->user() )
     {
-        return redirect('index');
+        //check here if the user is authenticated
+        if (!$this->auth->user()) {
+            return redirect('index');
+        }
+
+        return $next($request);
     }
 
-    return $next($request);
-}
-
-    public function getAllProduct(){
+    public function getAllProduct()
+    {
         $allProduct = Product::all();
 
-      
+
         return $allProduct;
     }
 
-    public function showAddProductView(){
+    public function showAddProductView()
+    {
 
         $cc = new CategoryController();
 
         return view('addProduct', $cc->getAllCategory());
     }
 
-    public function showAdminProductView(){
+    public function showAdminProductView()
+    {
 
         $data = [
             'products' => $this->getAllProduct()
-       ];
+        ];
 
         return view("viewProduct", $data);
     }
 
-    public function showProductView(){
+    public function showProductView()
+    {
         $data = [
             'products' => Product::paginate(3)
-       ];
+        ];
 
         return view("home", $data);
     }
 
-    public function showProductDetailView(Request $request){
+    public function showProductDetailView(Request $request)
+    {
         $id = $request->id;
 
         $selectedProduct = Product::where('id', $id)->first();
 
         $data = [
             'selectedProduct' => $selectedProduct
-          ];
+        ];
 
         return view('productDetail', $data);
-
     }
 
 
 
-    public function addProduct(Request $request){
- 
+    public function addProduct(Request $request)
+    {
+
         $request->validate([
             'productName' => 'required|min:5|unique:products',
             'productDescription' => 'required|min:50',
-            'productPrice' => 'required|numeric|min:0|not_in:0',
+            'productPrice' => 'required|numeric|min:0',
             'categoryID' => 'required',
-            'productImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg'
+            'productImage' => 'required|image|mimes:jpg,jpeg'
 
         ]);
 
 
         $data =  $request->all();
-        
-       $request->productImage->move(public_path('images'), $request->file('productImage')->getClientOriginalName());
-       
-       $imageName = $request->file('productImage')->getClientOriginalName();
+
+        $file = $request->file('productImage');
+
+        Storage::putFileAs('public/images', $file, $file->getClientOriginalName());
+
 
         Product::create([
-            
-        'productName' => $data['productName'],
-        'productDescription' => $data['productDescription'],
-        'productPrice' => $data['productPrice'],
-        'categoryID' => $data['categoryID'],
-        'productImage' => $imageName
-    ]);
-            
 
-        return redirect('/product');
+            'productName' => $data['productName'],
+            'productDescription' => $data['productDescription'],
+            'productPrice' => $data['productPrice'],
+            'categoryID' => $data['categoryID'],
+            'productImage' => $file->getClientOriginalName()
+        ]);
+
+
+        return redirect('product');
     }
 
 
-    public function checkImage($selectedProduct){
+    public function checkImage($selectedProduct)
+    {
         $data = $this->getAllProduct();
-     
+
         $counter = 0;
 
-        foreach($data as $product){
+        foreach ($data as $product) {
 
-          if($product->productImage == $selectedProduct->productImage){
-              $counter++;
-          }
-
+            if ($product->productImage == $selectedProduct->productImage) {
+                $counter++;
+            }
         }
 
         return $counter;
     }
 
-    public function deleteProduct(Request $request){
+    public function deleteProduct(Request $request)
+    {
         $id = $request->id;
 
         $selectedProduct = Product::where('id', $id)->first();
 
         $data = [
             'selectedProduct' => $selectedProduct
-          ];
+        ];
 
-          if(($this->checkImage($selectedProduct)) > 1){
+        if (($this->checkImage($selectedProduct)) == 1) {
 
-            $filename = public_path($selectedProduct->productImage);
+            $filename = $selectedProduct->productImage;
 
-            if(File::exists($filename)) {
-                File::delete($filename);
+            if (Storage::exists('public/images/' . $filename . '')) {
+
+                Storage::delete('public/images/' . $filename . '');
             }
+        }
 
-          }
-      
         $selectedProduct->delete();
 
         return redirect('product');
-
     }
 
 
-    public function editProductView(Request $request){
+    public function editProductView(Request $request)
+    {
 
         $cc = new CategoryController();
 
@@ -150,40 +157,31 @@ class ProductController extends Controller
 
         $selectedProduct = Product::where('id', $id)->first();
 
-        if(($this->checkImage($selectedProduct)) > 1){
-
-            $filename = public_path($selectedProduct->productImage);
-
-            if(File::exists($filename)) {
-                File::delete($filename);
-            }
-
-          }
-
         $data1 = [
             'selectedProduct' => $selectedProduct
-          ];
+        ];
 
         return view('editProduct', $cc->getAllCategory(), $data1);
-
     }
 
-    public function updateProduct(Request $request){
+    public function updateProduct(Request $request)
+    {
+
         $id = $request->id;
         // ['required','min:5',Rule::unique('products')->ignore($this->id)]
         $request->validate([
-            'updateProductName' => 'required|min:5|unique:products,productName,'.$id,
+            'updateProductName' => 'required|min:5|unique:products,productName,' . $id,
             'updateProductDescription' => 'required|min:50',
-            'updateProductPrice' => 'required|numeric|min:0|not_in:0',
+            'updateProductPrice' => 'required|numeric|min:0',
             'updateCategoryID' => 'required',
-            'updateProductImage' => 'required|image|mimes:jpg,png,jpeg,gif,svg'
+            'updateProductImage' => 'required|image|mimes:jpg,jpeg'
 
         ]);
 
-     
+
 
         $data = $request->all();
-        
+
 
         $updateProductName = $request->updateProductName;
         $updateProductCategory = $data['updateCategoryID'];
@@ -193,6 +191,16 @@ class ProductController extends Controller
 
         $selectedProduct = Product::where('id', $id)->first();
 
+        if (($this->checkImage($selectedProduct)) == 1) {
+
+            $filename = $selectedProduct->productImage;
+
+            if (Storage::exists('public/images/' . $filename . '')) {
+
+                Storage::delete('public/images/' . $filename . '');
+            }
+        }
+
         $selectedProduct->update([
             'productName' => $updateProductName,
             'categoryID' => $updateProductCategory,
@@ -200,27 +208,26 @@ class ProductController extends Controller
             'productImage' => $updateProductImage,
             'productDescription' =>  $updateProductDescription
         ]);
-    
-        
-       
-        $request->updateProductImage->move(public_path('images'), $request->file('updateProductImage')->getClientOriginalName());
-       
 
-        
+
+        Storage::putFileAs('public/images', $request->file('updateProductImage'), $updateProductImage);
+
+     
+
+
+
         return redirect('product');
     }
 
 
-    public function searchProducts(Request $request){
+    public function searchProducts(Request $request)
+    {
         $selectedProducts = Product::where('productName', 'like', "%$request->query_param%")->paginate(3);
 
         $data = [
             'products' => $selectedProducts
-       ];
+        ];
 
         return view("home", $data);
-
     }
-
-
 }

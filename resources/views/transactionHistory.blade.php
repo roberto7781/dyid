@@ -35,7 +35,7 @@
             <div class="card-body">
               <div class="row transactionDetailContainer">
                 <div class="col-12 col-lg-3 transactionDetailImage m-auto">
-                  <img src="{{url('/images/'.$transactionDetail->product->productImage)}}" style="max-width: 100%;padding:5%;display: block;
+                  <img src="../storage/images/{{$transactionDetail->product->productImage}}" style="max-width: 100%;padding:5%;display: block;
   margin-left: auto;
   margin-right: auto;
  ">

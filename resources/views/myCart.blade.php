@@ -21,7 +21,7 @@
         @endphp
         <div class="row cartDetailContainer">
           <div class="col-12 col-lg-3 cartImage m-auto">
-            <img src="{{url('/images/'.$cart->product->productImage)}}" style="max-width: 100%;padding:5%;display: block;
+            <img src="../storage/images/{{$cart->product->productImage}}" style="max-width: 100%;padding:5%;display: block;
   margin-left: auto;
   margin-right: auto;
  ">

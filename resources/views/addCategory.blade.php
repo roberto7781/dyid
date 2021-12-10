@@ -13,6 +13,9 @@
       <div class="form-group">
         <label for="categoryName">Category Name</label>
         <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Category Name">
+        @if ($errors->has('categoryName'))
+              <span class="text-danger">{{ $errors->first('categoryName') }}</span>
+              @endif
       </div>
       <div class="row">
         <div class="col-12">

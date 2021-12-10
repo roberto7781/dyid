@@ -45,6 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function cart(){
+      return $this->hasOne('App\Models\Cart');
+    }
+
+
     public function roles(){
         return $this->belongsTo('App\Models\Role', 'roleID', 'id');
     }

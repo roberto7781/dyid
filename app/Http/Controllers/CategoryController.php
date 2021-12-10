@@ -35,19 +35,19 @@ class CategoryController extends Controller
     public function showCategoryView(){
 
 
-        return view("categoryView", $this->getAllCategory());
+        return view("viewCategory", $this->getAllCategory());
     }
 
     public function addCategory(Request $request){
         
         $request->validate([
-            'categoryName' => 'required',
+            'categoryName' => 'required|min:2|unique:categories',
         ]);
 
     
         Category::create($request->all());
 
-        return redirect('/category');
+        return redirect('category');
     }
 
 
@@ -83,6 +83,10 @@ class CategoryController extends Controller
     public function updateCategory(Request $request){
         $id = $request->id;
         $updateCategoryName = $request->updateCategoryName;
+
+        $request->validate([
+            'updateCategoryName' => 'required|min:2|unique:categories,categoryName,'.$id
+        ]);
 
         Category::where('id', $id)->first()->update([
             'categoryName' => $updateCategoryName

@@ -31,7 +31,7 @@
         @endphp
         <tr>
           <th scope="row">{{$i}}</th>
-          <td><img src="{{url('/images/'.$product->productImage)}}" width="150px"></td>
+          <td><img src="../storage/images/{{$product->productImage}}" width="150px"></td>
           <td>{{$product->productName}}</td>
           <td style="word-break:break-all;width:30%">{{$product->productDescription}}</td>
           <td>{{$product->productPrice}}</td>

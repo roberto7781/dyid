@@ -22,11 +22,12 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         $request->validate([
-            'userName' => 'required',
+            'userName' => 'required|min:5',
             'userGender' => 'required',
             'userEmail' => 'required|unique:users',
             'userAddress' => 'required|min:10',
-            'userPassword' => 'required|min:6|confirmed'
+            'userPassword' => 'required|min:6|confirmed',
+            't&c' => 'accepted'
         ]);
 
         $data = $request->all();

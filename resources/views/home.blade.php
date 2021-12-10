@@ -12,7 +12,7 @@
   @foreach($products as $product)
   <div class="col-12 col-md-6 col-lg-4 productContainer" >
     <div class="card " style="max-height: 100%; height:100%">
-      <img class="card-img-top productImage" id="productImage" name="productImage" src="{{url('/images/'.$product->productImage)}}" alt="Card image cap">
+      <img class="card-img-top productImage" id="productImage" name="productImage" src="../storage/images/{{$product->productImage}}" alt="Card image cap">
       <div class="card-body">
         <div class="row">
 

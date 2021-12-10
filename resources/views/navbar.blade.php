@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
   <div class="container navbarContainer">
     <a class="navbar-brand" href="{{route('productView')}}">
-      <img style="height: 50px" src="{{url('/images/Logo_DYID_White.png')}}" alt="DYID Logo">
+      <img style="height: 50px" src="{{url('/site_assets/Logo_DYID_White.png')}}" alt="DYID Logo">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
