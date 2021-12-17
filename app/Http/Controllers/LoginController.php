@@ -8,18 +8,21 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Cookie;
 use Session;
+
 class LoginController extends Controller
 {
 
     // Return Login Page
-    public function showLoginView(){
+    public function showLoginView()
+    {
         return view('index');
     }
 
 
     // Validate User
 
-    public function processLogin(Request $request){
+    public function processLogin(Request $request)
+    {
         $request->validate([
             'userEmail' => 'required',
             'userPassword' => 'required'
@@ -30,22 +33,19 @@ class LoginController extends Controller
             'password' => $request['userPassword'],
         ];
 
-        $remember_me  = ( !empty( $request->remember_me ) )? TRUE : FALSE;
-
-        if(Auth::attempt($credentials)){
-            $user = User::where('userEmail',$request->userEmail)->first();
-            Auth::login($user, $remember_me);
+        $remember_me  =  $request->remember_me  ? true : false;
+        $this->setRememberMeTime();   
+        if (Auth::attempt($credentials, $remember_me)) {
+   
             $request->session()->regenerate();
-            $this->setRememberMeTime();
             return redirect()->intended('home')->withSuccess('Logged-in');
-
         }
 
         return back()->withErrors([
             'userPassword' => 'The provided credentials do not match our records.',
         ]);
     }
-    
+
     protected function setRememberMeTime()
     {
         // set remember me expire time
@@ -57,19 +57,22 @@ class LoginController extends Controller
 
         // reset that cookie's expire time
         Cookie::queue($rememberTokenName, Cookie::get($rememberTokenName), $rememberTokenExpireMinutes);
-
     }
-    public function logOut(Request $request) {
+    public function logOut(Request $request)
+    {
+     
         Auth::logout();
         $request->session()->invalidate();
+        $request->session()->regenerateToken();
+  
+      
         return redirect('/');
     }
     // Redirect if logged in
 
     public function __construct()
     {
-      
+
         $this->middleware('guest')->except('logOut');
     }
-
 }
