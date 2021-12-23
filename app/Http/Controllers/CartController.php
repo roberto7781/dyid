@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-
-
-    public function getAllCart()
-    {
+    public function getAllCart(){
         // To get all the cart where the userID is similar with the curent logged in user from the database
         $allCart = Cart::where('userID', Auth::id())->get();
 
@@ -20,9 +17,7 @@ class CartController extends Controller
     }
 
     // Getting cart view 
-    public function showCartView()
-    {
-
+    public function showCartView(){
         $data = [
             'carts' => $this->getAllCart()
         ];
@@ -30,10 +25,7 @@ class CartController extends Controller
         return view("myCart", $data);
     }
 
-
-    public function addToCart(Request $request)
-    {
-
+    public function addToCart(Request $request){
         // Quantity Validation
         $request->validate([
             'inputQuantity' => 'required|integer|min:1'
@@ -95,9 +87,7 @@ class CartController extends Controller
     }
 
 
-    public function editCartView(Request $request)
-    {
-
+    public function editCartView(Request $request){
         // Get the cart item id that want to be updated
         $id = $request->id;
 
@@ -112,15 +102,13 @@ class CartController extends Controller
         return view('editCart', $data);
     }
 
-    public function updateCart(Request $request)
-    {
+    public function updateCart(Request $request){
 
         // Quantity Validation
         $request->validate([
             'updateQuantity' => 'required|integer|min:1'
 
         ]);
-
 
         // Get the cart item id that want to be updated
         $id = $request->id;
@@ -141,8 +129,7 @@ class CartController extends Controller
     }
 
 
-    public function deleteAllCart()
-    {
+    public function deleteAllCart(){
         // Delete all cart items from database
         Cart::where('userID', Auth::id())->delete();
     }

@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // Creating role
+        // Inserting Role
         if(DB::table('roles')->count() == 0){
             DB::table('roles')->insert([
                 [

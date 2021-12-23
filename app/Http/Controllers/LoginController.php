@@ -18,7 +18,6 @@ class LoginController extends Controller
         return view('index');
     }
 
-
     // Validate User
     public function processLogin(Request $request)
     {
@@ -65,16 +64,12 @@ class LoginController extends Controller
         Cookie::queue($rememberTokenName, Cookie::get($rememberTokenName), $rememberTokenExpireMinutes);
     }
 
-
     public function logOut(Request $request)
     {
-     
-
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
   
-      
         return redirect('/');
     }
 

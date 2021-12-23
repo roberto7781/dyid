@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //Create Admin User
+        //Insert Admin User
         User::create([
             'userName' => 'Admin',
             'userAddress' => '-',

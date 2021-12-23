@@ -1,5 +1,4 @@
 @extends('pageLayout')
-
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/addProductStyle.css')}}">
 @endpush
@@ -55,9 +54,6 @@
           <button id="insertProduct" class="btn btn-secondary insertBtn">Add</button>
         </div>
       </div>
-
     </form>
-
   </div>
-
 @endsection

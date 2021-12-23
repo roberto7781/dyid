@@ -9,12 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-    //
-
-
     public function getAllTransaction()
     {
-
         // To get all the transaction where the userID is similar with the curent logged in user from the database
         return Transaction::where('userID', Auth::id())->get();
     }

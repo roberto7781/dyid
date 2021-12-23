@@ -33,7 +33,7 @@
             <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
               @csrf
 
-              @if(!Auth::user()->hasRole('Admin'))
+              @if(Auth::guest() || Auth::user()->hasRole('Member'))
               <div class="form-group row">
                 <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
                 <div class="col-sm-2">

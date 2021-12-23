@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-
     public function getAllProduct()
     {
         // To get all the product from the database
@@ -38,7 +37,6 @@ class ProductController extends Controller
         return view("viewProduct", $data);
     }
 
-
     public function showProductView()
     {
         // Putting all of the product from into an array
@@ -51,8 +49,7 @@ class ProductController extends Controller
         return view("home", $data);
     }
 
-    public function showProductDetailView(Request $request)
-    {
+    public function showProductDetailView(Request $request){
         // Get the product id that want to be shown
         $id = $request->id;
 
@@ -67,10 +64,7 @@ class ProductController extends Controller
         return view('productDetail', $data);
     }
 
-
-
-    public function addProduct(Request $request)
-    {
+    public function addProduct(Request $request){
         // Product information validation
         $request->validate([
             'productName' => 'required|min:5|unique:products',
@@ -99,7 +93,6 @@ class ProductController extends Controller
             'categoryID' => $data['categoryID'],
             'productImage' => $file->getClientOriginalName()
         ]);
-
 
         return redirect('product');
     }
@@ -152,15 +145,12 @@ class ProductController extends Controller
     }
 
 
-    public function editProductView(Request $request)
-    {
-
+    public function editProductView(Request $request){
         // Creating a new category controller
         $cc = new CategoryController();
 
         // Get the product id that want to be updated
         $id = $request->id;
-
 
         // Select the product
         $selectedProduct = Product::where('id', $id)->first();
@@ -173,8 +163,7 @@ class ProductController extends Controller
         return view('editProduct', $cc->getAllCategory(), $data1);
     }
 
-    public function updateProduct(Request $request)
-    {
+    public function updateProduct(Request $request){
 
         // Get the product id that want to be updated
         $id = $request->id;
@@ -191,8 +180,6 @@ class ProductController extends Controller
 
         // Getting all the data inputted by the user
         $data = $request->all();
-
-
         $updateProductName = $request->updateProductName;
         $updateProductCategory = $data['updateCategoryID'];
         $updateProductDescription = $request->updateProductDescription;

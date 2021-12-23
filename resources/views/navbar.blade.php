@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="{{ asset('css/navbarAdminStyle.css')}}">
 @endif
 
-
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
   <div class="container navbarContainer">
     <a class="navbar-brand" href="{{route('productView')}}">
@@ -19,7 +18,6 @@
           <button type="submit" placeholder="" class="form-control search" value="Search"><span class="fa fa-search"></span></button>
         </div>
       </form>
-
 
       <ul class="navbar-nav " style="margin-left: auto;">
         <li class="nav-item active"><a href="{{route('productView')}}" class="nav-link">Home</a></li>

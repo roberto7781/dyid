@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    //
-
     public function getAllCategory()
     {
-
         // To get all the category from the database
         $allCategory = Category::all();
 
@@ -26,7 +23,6 @@ class CategoryController extends Controller
 
     public function getCategory($id)
     {
-
         // Get specific category
         $category = Category::where('id', $id)->first();
 
@@ -36,22 +32,17 @@ class CategoryController extends Controller
     // Getting add category view
     public function showAddCategoryView()
     {
-
         return view('addCategory');
     }
 
     // Getting category view
     public function showCategoryView()
     {
-
         return view("viewCategory", $this->getAllCategory());
     }
 
-
-
     public function addCategory(Request $request)
     {
-
         // Category information validation
         $request->validate([
             'categoryName' => 'required|min:2|unique:categories',
@@ -65,9 +56,7 @@ class CategoryController extends Controller
 
 
 
-    public function deleteCategory(Request $request)
-    {
-
+    public function deleteCategory(Request $request){
         // Get the category id that want to be deleted
         $id = $request->id;
 
@@ -80,9 +69,7 @@ class CategoryController extends Controller
         return redirect('category');
     }
 
-    public function editCategoryView(Request $request)
-    {
-
+    public function editCategoryView(Request $request){
         // Get the category id that want to be deleted
         $id = $request->id;
 
@@ -97,14 +84,12 @@ class CategoryController extends Controller
         return view('editCategory', $data);
     }
 
-    public function updateCategory(Request $request)
-    {
+    public function updateCategory(Request $request){
          // Get the category id that want to be deleted
         $id = $request->id;
 
         $updateCategoryName = $request->updateCategoryName;
 
-        
         // Category information validation
         $request->validate([
             'updateCategoryName' => 'required|min:2|unique:categories,categoryName,' . $id
