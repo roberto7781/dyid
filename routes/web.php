@@ -84,3 +84,9 @@ route::group(['middleware' => ['auth', 'role:Member']], function () {
     route::get('/checkOut', [TransactionController::class, 'insertTransaction'])->name('checkOut');
     route::get('/transactionHistory', [TransactionController::class, 'showTransactionHistory'])->name('transactionHistoryView');
 });
+
+//Error
+
+Route::fallback(function(){
+    return view('errors.404');
+})->name('errorView');

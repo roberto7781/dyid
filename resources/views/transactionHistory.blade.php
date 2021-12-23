@@ -12,25 +12,22 @@
   <div class="container transactionContainer" style="max-width: 90%;">
     <h1>My Transaction History</h1>
     <div class="row">
+      @if(!$transactions->isEmpty())
       <div id="accordion" style="width: 100%;">
         @foreach($transactions as $transaction)
         <div class="card">
-   
+
           <div class="card-header panel-heading" id="headingOne" role="tab">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse"  href="#multiCollapse{{$transaction->id}}" aria-expanded="true" aria-controls="collapseOne">
-                {{$transaction->created_at}}
-                </a>
-              </h4>
-          </div>
-            <!-- <h5 class="mb-0">
-              <a class="btn btn-link" data-toggle="collapse" data-target="#multiCollapse{{$transaction->id}}" >
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" href="#multiCollapse{{$transaction->id}}" aria-expanded="true" aria-controls="collapseOne">
                 {{$transaction->created_at}}
               </a>
-            </h5> -->
+            </h4>
+          </div>
   
 
-          <div id="multiCollapse{{$transaction->id}}" class="collapse multi-collapse"  >
+
+          <div id="multiCollapse{{$transaction->id}}" class="panel-collapse collapse">
             @foreach($transaction->transaction_details as $transactionDetail)
             <div class="card-body">
               <div class="row transactionDetailContainer">
@@ -63,6 +60,15 @@
 
       </div>
 
+      @else
+      <div class="card">
+        <div class="card-body">
+        You haven't made any transaction...
+        </div>
+      </div>
+     
+
+      @endif
 
 
 
@@ -73,6 +79,15 @@
   </div>
 
 </div>
+<script>
+  $('.collapse').on('shown.bs.collapse', function () {
 
+    $(this).siblings('.panel-heading').addClass('active');
+  });
+
+  $('.collapse').on('hide.bs.collapse', function () {
+
+    $(this).siblings('.panel-heading').removeClass('active');
+  });
+</script>
 @endsection
-

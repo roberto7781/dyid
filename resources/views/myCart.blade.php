@@ -8,10 +8,11 @@
 @section('content')
 <div class="mainContainer">
 
-  <div class="container" style="max-width: 90%;">
+  <div class="container" style="max-width: 90%;margin-top:2rem;margin-bottom:2rem">
     <h1>My Cart</h1>
     <div class="row cartContainer">
       <div class="col-12">
+        @if(!$carts->isEmpty())
         @php
         $totalPrice = 0;
         @endphp
@@ -45,13 +46,21 @@
 
         </div>
         @endforeach
+        @else
+        <div class="card">
+          <div class="card-body">
+            You have no items...
+          </div>
+        </div>
+
+        @endif
 
       </div>
 
     </div>
 
 
-
+    @if(!$carts->isEmpty())
     <div class="row">
       <div class="col-6">
         <p>Total Price:</p>
@@ -59,9 +68,10 @@
       </div>
 
       <div class="col-6">
-          <a class="btn btn-primary" id="button-addon2"  style="float: right;" href="{{route('checkOut')}}">Checkout</a>
+        <a class="btn btn-primary" id="button-addon2" style="float: right;" href="{{route('checkOut')}}">Checkout</a>
       </div>
     </div>
+    @endif
 
   </div>
 
