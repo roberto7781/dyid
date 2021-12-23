@@ -15,7 +15,7 @@
   margin-right: auto;">
 
       </div>
-      <!-- <div class="col-1"></div> -->
+
       <div class="col-12 col-lg-6 m-auto">
         <h2>{{$selectedProduct->productName}}</h2>
         <hr>
@@ -32,6 +32,8 @@
           <div class="col-12">
             <form action="{{route('addToCart',  ['id' => $selectedProduct->id])}}" method="POST">
               @csrf
+
+              @if(!Auth::user()->hasRole('Admin'))
               <div class="form-group row">
                 <label for="inputQuantity" class="col-sm-2 col-form-label">Quantity</label>
                 <div class="col-sm-2">
@@ -50,13 +52,12 @@
                 <div class="col-12"><span class="text-danger">{{ $errors->first('inputQuantity') }}</span></div>
                 @endif
               </div>
+              @endif
 
             </form>
 
 
             </form>
-
-
 
           </div>
         </div>

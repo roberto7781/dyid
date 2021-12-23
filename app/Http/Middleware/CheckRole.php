@@ -16,6 +16,8 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role)
     {
+
+        // Redirect user to error page when they access wrong URL (For admin or customer)
         if (! $request->user()->hasRole($role)) {
             return response()->view('errors.404');
             

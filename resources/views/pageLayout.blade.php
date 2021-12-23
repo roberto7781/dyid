@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
 
-<!-- Styles -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-<!-- Navbar -->
-<link rel="stylesheet" href="{{ asset('css/navbarStyle.css')}}">
-<script src="{{ asset('js/navbar.js')}}"></script>
+  <!-- Navbar -->
+  <link rel="stylesheet" href="{{ asset('css/navbarStyle.css')}}">
+  <script src="{{ asset('js/navbar.js')}}"></script>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href=" {{mix ('css/app.css')}}">
-<!-- Navbar -->
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href=" {{mix ('css/app.css')}}">
+  <!-- Navbar -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-@stack('styles')
+  <!-- To get styles from other page -->
+  @stack('styles')
 
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="{{url('/site_assets/Logo_DYID_Black.png')}}" type="images/png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{url('/site_assets/Logo_DYID_Black.png')}}" type="images/png">
 
 </head>
+
 <body>
-@include('navbar')
+  <!-- Include Navbar -->
+  @include('navbar')
   <div class="container" style="max-width:100%">
+
+    <!-- To Get Content from Other Page -->
     @yield('content')
   </div>
+
   <!-- FOOTER -->
   <div class="footer">
-    <!-- FOOTER -->
     <footer class="flex-shrink-0">
       <div class="container py-4">
         <div class="row gy-4 gx-5">

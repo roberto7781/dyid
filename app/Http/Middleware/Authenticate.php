@@ -15,6 +15,8 @@ class Authenticate extends Middleware
 
     protected function redirectTo($request)
     {
+
+        // Redirect user if they access page they aren't supposed to (For Guest)
         if (!$request->expectsJson()) {
             return route('loginView');
         }

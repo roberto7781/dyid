@@ -24,7 +24,6 @@ Route::get('/register', [RegisterController::class, 'showRegisterView'])->name('
 Route::post('/create-user', [RegisterController::class, 'register'])->name('userRegistration');
 
 // Login
-
 route::get('/', [LoginController::class, 'showLoginView'])->name('loginView');
 route::post('/user-login', [LoginController::class, 'processLogin'])->name('userLogin');
 
@@ -37,7 +36,7 @@ route::get('/home', function () {
 });
 
 
-// Category
+// Category (Middleware to make the page only accessable to Admin Role)
 route::group(['middleware' => ['auth', 'role:Admin']], function () {
     route::get('/category', [CategoryController::class, 'showCategoryView'])->name("categoryView");
 
@@ -52,10 +51,10 @@ route::group(['middleware' => ['auth', 'role:Admin']], function () {
 
 
 
-// Product
+// Product (Middleware to make the page only accessable to Admin Role)
 route::group(['middleware' => ['auth', 'role:Admin']], function () {
     route::get('/product', [ProductController::class, 'showAdminProductView'])->name("adminProductView");
-
+    
     route::get('/addProduct', [ProductController::class, 'showAddProductView'])->name("addProductView");
     route::post('/create-product', [ProductController::class, 'addProduct'])->name('createProduct');
 
@@ -70,12 +69,12 @@ route::get('/home', [ProductController::class, 'showProductView'])->name("produc
 route::get('/productDetail', [ProductController::class, 'showProductDetailView'])->name('productDetailView');
 
 
-// Cart
-
+// Cart & Transaction (Middleware to make the page only accessable to Member Role)
 route::group(['middleware' => ['auth', 'role:Member']], function () {
+
+    // Cart
     route::post('/addToCart{id}', [CartController::class, 'addToCart'])->name('addToCart');
     route::get('/viewCart', [CartController::class, 'showCartView'])->name('cartView');
-
     route::post('/deleteCart{id}', [CartController::class, 'deleteCart'])->name("deleteCart");
     route::get('/editCart{id}', [CartController::class, 'editCartView'])->name("editCartView");
     route::post('/updateCart{id}', [CartController::class, 'updateCart'])->name("updateCart");
@@ -86,7 +85,6 @@ route::group(['middleware' => ['auth', 'role:Member']], function () {
 });
 
 //Error
-
 Route::fallback(function(){
     return view('errors.404');
 })->name('errorView');

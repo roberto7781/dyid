@@ -29,13 +29,13 @@
               <p class="card-text productPrice" id="productPrice" name="productPrice">IDR. {{$product->productPrice}}</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
+   
+              
 
-              <a id="productDetail" class="btn btn-secondary buyBtn" href="{{((route ('productDetailView', ['id' => $product->id])))}}">More Detail</a>
-
-            </div>
-          </div>
+           
+        </div>
+        <div class="card-footer" style="border-top: 0px;background:transparent">
+        <a id="productDetail" class="btn btn-secondary buyBtn" href="{{((route ('productDetailView', ['id' => $product->id])))}}" >More Detail</a>
         </div>
       </div>
     </div>
