@@ -1,9 +1,7 @@
 @extends('pageLayout')
-
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/productDetailStyle.css')}}">
 @endpush
-
 @section('content')
 <div class="mainContainer">
   <div class="container productDetailContainer" style="max-width: 85%;">
@@ -13,7 +11,6 @@
         <img src="../storage/images/{{$selectedCart->product->productImage}}" style="width:100%;padding:5%;display: block;
 margin-left: auto;
 margin-right: auto;">
-
       </div>
       <!-- <div class="col-1"></div> -->
       <div class="col-12 col-lg-6 m-auto">
@@ -46,21 +43,12 @@ margin-right: auto;">
                 @endif
               </div>
             </form>
-
             </form>
-
-
-
           </div>
         </div>
-
       </div>
-
     </div>
-
-
   </div>
-
 </div>
 
 @endsection
