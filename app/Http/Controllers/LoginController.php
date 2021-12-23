@@ -20,9 +20,9 @@ class LoginController extends Controller
 
 
     // Validate User
-
     public function processLogin(Request $request)
     {
+        // User information validation
         $request->validate([
             'userEmail' => 'required',
             'userPassword' => 'required'
@@ -33,14 +33,21 @@ class LoginController extends Controller
             'password' => $request['userPassword'],
         ];
 
+        // Remember me token
         $remember_me  =  $request->remember_me  ? true : false;
+
+        // Calling a function to set cookie time to 5 hours
         $this->setRememberMeTime();   
+
+        // Check whether the credentials inputted is the same with the one in the database
         if (Auth::attempt($credentials, $remember_me)) {
    
+            // Creating new session
             $request->session()->regenerate();
             return redirect()->intended('home')->withSuccess('Logged-in');
         }
 
+        // Password or email doesn't matched with data in database
         return back()->withErrors([
             'userPassword' => 'The provided credentials do not match our records.',
         ]);
@@ -51,16 +58,18 @@ class LoginController extends Controller
         // set remember me expire time
         $rememberTokenExpireMinutes = 300;
 
-        // first we need to get the "remember me" cookie's key, this key is generate by laravel randomly
-        // it looks like: remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d
+        // Getting Cookie key
         $rememberTokenName = Auth::getRecallerName();
 
         // reset that cookie's expire time
         Cookie::queue($rememberTokenName, Cookie::get($rememberTokenName), $rememberTokenExpireMinutes);
     }
+
+
     public function logOut(Request $request)
     {
      
+
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -68,8 +77,8 @@ class LoginController extends Controller
       
         return redirect('/');
     }
-    // Redirect if logged in
 
+    // Redirect if logged in
     public function __construct()
     {
 
