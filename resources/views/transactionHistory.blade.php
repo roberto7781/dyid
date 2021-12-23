@@ -44,7 +44,7 @@
 
                   </div>
 
-                  <p style="font-size: 24px;">x{{$transaction->userID}} pcs</p>
+                  <p style="font-size: 24px;">x{{$transactionDetail->quantity}} pcs</p>
                   <p style="font-size: 24px;">IDR. {{$transactionDetail->price * $transactionDetail->quantity}}</p>
 
 

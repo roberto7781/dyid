@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
+
+    // Role can be used by many user
     public function user() {
         return $this->hasMany('App\Models\User');
     }

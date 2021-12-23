@@ -19,8 +19,9 @@ class RegisterController extends Controller
 
 
     // Register
-
     public function register(Request $request){
+
+        // User information validation
         $request->validate([
             'userName' => 'required|min:5',
             'userGender' => 'required',
@@ -30,7 +31,10 @@ class RegisterController extends Controller
             't&c' => 'accepted'
         ]);
 
+         // Getting all the data inputted by the user
         $data = $request->all();
+
+        // Calling a function to insert the data into database
         $check = $this->createUser($data);
 
         return redirect('');
@@ -40,7 +44,7 @@ class RegisterController extends Controller
 
     public function createUser(array $data){
 
-        
+        // Creating a new user (Inserting it into database)
         return User::create([
             'userName' => $data['userName'],
             'userAddress' => $data['userAddress'],
@@ -51,6 +55,7 @@ class RegisterController extends Controller
         ]);
     }
 
+    // Redirect if logged in
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

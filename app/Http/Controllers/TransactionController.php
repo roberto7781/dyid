@@ -11,37 +11,51 @@ class TransactionController extends Controller
 {
     //
 
-    public function getAllTransaction(){
 
+    public function getAllTransaction()
+    {
+
+        // To get all the transaction where the userID is similar with the curent logged in user from the database
         return Transaction::where('userID', Auth::id())->get();
     }
 
-    public function getAllTransactionDetail($transactionID){
-
+    public function getAllTransactionDetail($transactionID)
+    {
+        // To get all the cart where the userID is similar with the curent logged in user from the database
         return TransactionDetail::where(["transactionID" => $transactionID, 'userID' => Auth::id()])->get();
     }
 
-    public function insertTransaction(){
-
+    public function insertTransaction()
+    {
+        // Creating a cart controller
         $cc = new CartController();
 
+        // Get all cart items
         $carts = $cc->getAllCart();
 
-       $transaction =  Transaction::create([
+        // Creating a new Transaction (Inserting it into database)
+        $transaction =  Transaction::create([
             'userID' => Auth::id()
         ]);
 
-        foreach($carts as $cart){
+        // Looping through the cart items
+        foreach ($carts as $cart) {
+
+            // Calling a function to create transaction detail
             $this->createTransactionDetail($cart, $transaction);
         }
 
+        // Delete all teh cart items
         $cc->deleteAllCart();
 
         return redirect('transactionHistory');
     }
 
 
-    public function createTransactionDetail($cart, $transaction){
+    public function createTransactionDetail($cart, $transaction)
+    {
+
+        // Creating a new Transaction Detail (Inserting it into database)
         TransactionDetail::create([
             'productID' => $cart->product->id,
             'transactionID' => $transaction->id,
@@ -50,14 +64,14 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function showTransactionHistory(){
+    // Transaction History View
+    public function showTransactionHistory()
+    {
 
         $data = [
             'transactions' => $this->getAllTransaction()
         ];
 
-        return view('transactionHistory',$data);
+        return view('transactionHistory', $data);
     }
-
-
 }

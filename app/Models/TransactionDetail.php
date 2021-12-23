@@ -15,12 +15,15 @@ class TransactionDetail extends Model
         'price'
     ];
 
-    
-    public function transaction(){
+    // Transaction detail belong to transaction
+    public function transaction()
+    {
         return $this->belongsTo('App\Models\Transaction');
     }
 
-    public function product(){
+    // Transaction detail belong to product
+    public function product()
+    {
         return $this->belongsTo('App\Models\Product', 'productID', 'id');
     }
 

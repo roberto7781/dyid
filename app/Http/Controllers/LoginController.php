@@ -81,7 +81,6 @@ class LoginController extends Controller
     // Redirect if logged in
     public function __construct()
     {
-
         $this->middleware('guest')->except('logOut');
     }
 }

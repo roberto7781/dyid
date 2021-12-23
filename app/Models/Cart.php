@@ -14,11 +14,15 @@ class Cart extends Model
         'userID'
     ];
 
-    public function product(){
+    // Cart item belong to one product
+    public function product()
+    {
         return $this->belongsTo('App\Models\Product', 'productID', 'id');
     }
 
-    public function user(){
+    // Cart item belong to one user
+    public function user()
+    {
         return $this->belongsTo('App\Models\User', 'userID', 'id');
     }
 
