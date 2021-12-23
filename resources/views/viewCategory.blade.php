@@ -39,17 +39,12 @@
       @endforeach
     </tbody>
   </table>
-
   @else
   <div class="card">
     <div class="card-body">
       There isn't any category...
     </div>
   </div>
-
-
   @endif
 </div>
-
-
 @endsection
