@@ -20,7 +20,13 @@
             </h4>
           </div>
           <div id="multiCollapse{{$transaction->id}}" class="panel-collapse collapse">
+            @php
+            $totalPrice = 0;
+            @endphp
             @foreach($transaction->transaction_details as $transactionDetail)
+            @php
+            $totalPrice += $transactionDetail->price * $transactionDetail->quantity
+            @endphp
             <div class="card-body">
               <div class="row transactionDetailContainer">
                 <div class="col-12 col-lg-3 transactionDetailImage m-auto">
@@ -37,6 +43,13 @@
                   <p style="font-size: 24px;">IDR. {{$transactionDetail->price * $transactionDetail->quantity}}</p>
                 </div>
               </div>
+
+              <div class="row" style="margin-top: 2rem;">
+                <div class="col-12" >
+                  <p style="float: right;">Total Price: IDR. {{$totalPrice}}</p>
+           
+                </div>
+              </div>
             </div>
             @endforeach
           </div>
@@ -46,7 +59,7 @@
       @else
       <div class="card">
         <div class="card-body">
-        You haven't made any transaction...
+          You haven't made any transaction...
         </div>
       </div>
       @endif
@@ -54,12 +67,12 @@
   </div>
 </div>
 <script>
-  $('.collapse').on('shown.bs.collapse', function () {
+  $('.collapse').on('shown.bs.collapse', function() {
 
     $(this).siblings('.panel-heading').addClass('active');
   });
 
-  $('.collapse').on('hide.bs.collapse', function () {
+  $('.collapse').on('hide.bs.collapse', function() {
 
     $(this).siblings('.panel-heading').removeClass('active');
   });

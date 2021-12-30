@@ -11,13 +11,13 @@
   <table class="table table-striped" style="padding: 0px 20px;">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">No</th>
-        <th scope="col">Product Image</th>
-        <th scope="col">Product Name</th>
-        <th scope="col">Product Description</th>
-        <th scope="col">Product Price</th>
-        <th scope="col">Product Category</th>
-        <th scope="col">Action</th>
+        <th scope="col-1">No</th>
+        <th scope="col-3">Product Image</th>
+        <th scope="col-1">Product Name</th>
+        <th scope="col-3">Product Description</th>
+        <th scope="col-1">Product Price</th>
+        <th scope="col-1">Product Category</th>
+        <th scope="col-2">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
       $i++;
       @endphp
       <tr>
-        <th scope="row">{{$i}}</th>
+        <td scope="row">{{$i}}</td>
         <td><img src="../storage/images/{{$product->productImage}}" width="150px"></td>
         <td>{{$product->productName}}</td>
         <td style="word-break:break-all;width:30%">{{$product->productDescription}}</td>

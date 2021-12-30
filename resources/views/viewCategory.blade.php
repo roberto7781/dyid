@@ -25,7 +25,7 @@
       $i++
       @endphp
       <tr>
-        <th scope="row">{{$i}}</th>
+        <td scope="row">{{$i}}</td>
         <td>{{$category->categoryName}}</td>
 
         <td>
